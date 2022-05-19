@@ -1,0 +1,7 @@
+DecalEntity {
+ ID "5966882107E5A9AA"
+ coords 0 0 0
+ FarPlane 1
+ TerrainOnly 0
+ Mat "{E1866216CEB08179}materials/BloodSplatter.emat"
+}

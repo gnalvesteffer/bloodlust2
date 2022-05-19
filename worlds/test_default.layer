@@ -1,0 +1,61 @@
+$grp SCR_ChimeraCharacter : "{2619482C6C4202E0}Prefabs/Characters/Campaign/Final/Campaign_US_AI.et" {
+ {
+  coords 4113.8 34.506 7812.118
+ }
+ {
+  coords 4116.013 35.151 7814.873
+  angleY -119.51
+ }
+ {
+  coords 4116.86 35.178 7813.751
+  angleY -12.778
+ }
+ {
+  coords 4113.221 34.563 7814.843
+  angleY 162.395
+ }
+ {
+  coords 4119.831 35.178 7821.82
+  angleY -12.778
+ }
+ {
+  coords 4120.578 35.178 7821.046
+  angleY -12.778
+ }
+}
+$grp SCR_ChimeraCharacter : "{7A40B2D323AC5AC5}Prefabs/Characters/Campaign/Final/Campaign_USSR_AI.et" {
+ {
+  coords 4110.156 34.588 7816.576
+  angleY -53.087
+ }
+ {
+  coords 4111.618 34.541 7815.806
+  angleY 52.393
+ }
+ {
+  coords 4108.273 34.551 7817.656
+  angleY 157.22
+ }
+ {
+  coords 4110.44 34.522 7815.65
+  angleY -147.161
+ }
+ {
+  coords 4109.231 34.564 7817
+  angleY 143.093
+ }
+}
+$grp DecalEntity : "{DFB8563B533EBC88}prefabs/BloodSplatter.et" {
+ {
+  coords 4114.913 34.823 7813.109
+  angleX -90
+  angleY 180
+  angleZ -148.18
+ }
+ {
+  coords 4115.154 35.105 7813.463
+  angleX -90
+  angleY -180
+  angleZ -180
+ }
+}

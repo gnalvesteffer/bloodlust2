@@ -1,0 +1,8 @@
+GameProject {
+ ID "BloodLust"
+ GUID "59664C0CB36501CD"
+ TITLE "BloodLust"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+}
