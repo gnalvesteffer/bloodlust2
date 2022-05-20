@@ -2,9 +2,9 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 {
 	private const float GROUND_SPLATTER_INTERSECTION_DISTANCE = 3;
 	private const float SURFACE_SPLATTER_INTERSECTION_DISTANCE = 2;
-	private const float FAR_PLANE = 3.0;
+	private const float FAR_PLANE = 1.0;
 	private const float DAMAGE_THRESHOLD = 20.0;
-	private const float DAMAGE_OPACITY_SCALAR = 3.0;
+	private const float DAMAGE_OPACITY_SCALAR = 4.0;
 	private const int MINIMUM_SPLATTER_OPACITY = 255 / 3;
 	private const string SPLATTER_MATERIAL_DIRECTORY = "{E1866216CEB08179}materials/splatters";
 	private const int TOTAL_SPLATTER_MATERIALS = 7;
@@ -48,7 +48,7 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 		{
 			m_world.CreateDecal(
 				groundTraceParam.TraceEnt,
-				m_owner.GetOrigin() + Vector(0, 1, 0),
+				m_owner.GetOrigin() + Vector(0, FAR_PLANE / 2, 0),
 				vector.Lerp(-groundTraceParam.TraceNorm, hitDirection, 0.5),
 				0,
 				FAR_PLANE,
@@ -66,7 +66,7 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 		{
 			m_world.CreateDecal(
 				surfaceTraceParam.TraceEnt,
-				intersectionPosition - hitDirection * 0.25,
+				intersectionPosition - hitDirection * (FAR_PLANE / 2),
 				hitDirection,
 				0,
 				FAR_PLANE,

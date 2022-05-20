@@ -51,6 +51,30 @@ $grp DecalEntity {
   TerrainOnly 0
   Mat "{D06061A8FAE17144}materials/splatters/7.emat"
  }
+ {
+  coords 4116.454 37.063 7802.356
+  angleX -7.48
+  angleY 174.886
+  angleZ -99.824
+  TerrainOnly 0
+  Mat "{E1866216CEB08179}materials/splatters/1.emat"
+ }
+ {
+  coords 4128.954 40.695 7770.751
+  angleX -9.216
+  angleY 79.769
+  angleZ -81.78
+  TerrainOnly 0
+  Mat "{E1866216CEB08179}materials/splatters/1.emat"
+ }
+ {
+  coords 4116.005 36.72 7801.631
+  angleX -7.48
+  angleY 174.886
+  angleZ -34.263
+  TerrainOnly 0
+  Mat "{E1866216CEB08179}materials/splatters/1.emat"
+ }
 }
 LightEntity {
  coords 4115.297 38.154 7813.688
@@ -179,6 +203,10 @@ $grp SCR_ChimeraCharacter : "{2619482C6C4202E0}Prefabs/Characters/Campaign/Final
  {
   coords 4116.114 36.823 7803.322
   angleY 110.593
+ }
+ {
+  coords 4114.981 34.878 7813.686
+  angleY 178.105
  }
 }
 $grp SCR_ChimeraCharacter : "{7A40B2D323AC5AC5}Prefabs/Characters/Campaign/Final/Campaign_USSR_AI.et" {
