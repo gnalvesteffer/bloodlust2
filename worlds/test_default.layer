@@ -1,3 +1,57 @@
+$grp DecalEntity {
+ {
+  coords 4116.088 34.75 7812.198
+  angleX -90
+  angleY 180
+  angleZ -148.18
+  TerrainOnly 0
+  Mat "{E1866216CEB08179}materials/splatters/1.emat"
+ }
+ {
+  coords 4115.316 34.662 7812.792
+  angleX -90
+  angleY 180
+  angleZ -148.18
+  TerrainOnly 0
+  Mat "{8E3E81D1390C727B}materials/splatters/2.emat"
+ }
+ {
+  coords 4115.245 34.866 7813.178
+  angleX -90
+  angleZ 37.179
+  TerrainOnly 0
+  Mat "{C7505DF437AA8B21}materials/splatters/3.emat"
+ }
+ {
+  coords 4117.082 35.161 7811.777
+  angleX -90
+  angleY 180
+  angleZ -148.18
+  TerrainOnly 0
+  Mat "{8E8848EB456CFF4B}materials/splatters/4.emat"
+ }
+ {
+  coords 4114.097 35.475 7814.533
+  angleY 31.82
+  TerrainOnly 0
+  Mat "{7A800F7348B1973F}materials/splatters/5.emat"
+ }
+ {
+  coords 4114.886 34.727 7812.748
+  angleX -90
+  angleY 180
+  angleZ -148.18
+  TerrainOnly 0
+  Mat "{24682630F73C1930}materials/splatters/6.emat"
+ }
+ {
+  coords 4114.34 34.652 7812.521
+  angleX -90
+  angleZ 61.628
+  TerrainOnly 0
+  Mat "{D06061A8FAE17144}materials/splatters/7.emat"
+ }
+}
 LightEntity {
  coords 4115.297 38.154 7813.688
  Color 0.89 0.878 0.755 0
@@ -122,6 +176,10 @@ $grp SCR_ChimeraCharacter : "{2619482C6C4202E0}Prefabs/Characters/Campaign/Final
   coords 4124.647 35.141 7807.149
   angleY -158.85
  }
+ {
+  coords 4116.114 36.823 7803.322
+  angleY 110.593
+ }
 }
 $grp SCR_ChimeraCharacter : "{7A40B2D323AC5AC5}Prefabs/Characters/Campaign/Final/Campaign_USSR_AI.et" {
  {
@@ -151,51 +209,5 @@ Vehicle CampaignSupplyTruckEast1 : "{BB00538859C87DAC}Prefabs/MP/Campaign/Assets
    m_fVehicleDestroyDamage 21809.699
   }
  }
- coords 4120.841 35.34 7795.438
-}
-$grp DecalEntity : "{DFB8563B533EBC88}prefabs/BloodSplatter.et" {
- {
-  coords 4114.912 34.823 7813.101
-  angleX -90
-  angleY 180
-  angleZ -148.18
- }
- {
-  coords 4115.324 34.537 7812.807
-  angleX -90
-  angleY 180
-  angleZ -148.18
-  Mat "{8E3E81D1390C727B}materials/splatters/2.emat"
- }
- {
-  coords 4115.391 34.898 7813.682
-  angleX -90
-  angleZ 37.179
-  Mat "{C7505DF437AA8B21}materials/splatters/3.emat"
- }
- {
-  coords 4117.087 34.984 7811.792
-  angleX -90
-  angleY 180
-  angleZ -148.18
-  Mat "{8E8848EB456CFF4B}materials/splatters/4.emat"
- }
- {
-  coords 4114.102 35.35 7814.548
-  angleY 31.82
-  Mat "{7A800F7348B1973F}materials/splatters/5.emat"
- }
- {
-  coords 4114.892 34.602 7812.763
-  angleX -90
-  angleY 180
-  angleZ -148.18
-  Mat "{24682630F73C1930}materials/splatters/6.emat"
- }
- {
-  coords 4114.346 34.527 7812.537
-  angleX -90
-  angleZ 61.628
-  Mat "{D06061A8FAE17144}materials/splatters/7.emat"
- }
+ coords 4116.394 34.821 7800.615
 }
