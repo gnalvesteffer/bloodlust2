@@ -22,6 +22,58 @@ $grp SCR_ChimeraCharacter : "{2619482C6C4202E0}Prefabs/Characters/Campaign/Final
   coords 4120.578 35.178 7821.046
   angleY -12.778
  }
+ {
+  coords 4108.668 34.078 7813.039
+  angleY -120.878
+ }
+ {
+  coords 4110.532 34.125 7810.33
+  angleY -100.932
+ }
+ {
+  coords 4108.807 34.201 7803.698
+  angleY -100.07
+ }
+ {
+  coords 4110.024 34.222 7805.322
+  angleY -73.655
+ }
+ {
+  coords 4110.712 34.498 7799.458
+  angleY -52.067
+ }
+ {
+  coords 4116.575 39.434 7813.891
+  angleY -164.94
+ }
+ {
+  coords 4128.278 36.006 7802.201
+  angleY -67.226
+ }
+ {
+  coords 4127.528 35.382 7803.914
+  angleY 139.111
+ }
+ {
+  coords 4119.604 34.8 7805.102
+  angleY -120.878
+ }
+ {
+  coords 4123.044 35.139 7805.022
+  angleY -80.033
+ }
+ {
+  coords 4118.955 34.895 7802.413
+  angleY -20.855
+ }
+ {
+  coords 4110.97 34.779 7794.44
+  angleY 31.382
+ }
+ {
+  coords 4128.443 39.472 7771.584
+  angleY -96.594
+ }
 }
 $grp SCR_ChimeraCharacter : "{7A40B2D323AC5AC5}Prefabs/Characters/Campaign/Final/Campaign_USSR_AI.et" {
  {
