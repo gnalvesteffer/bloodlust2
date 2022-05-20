@@ -1,3 +1,11 @@
+LightEntity {
+ coords 4115.297 38.154 7813.688
+ Color 0.89 0.878 0.755 0
+ LV 1.852
+ Radius 21.37
+ Visualization Disabled
+ LensFlareScale 0.247
+}
 $grp SCR_ChimeraCharacter : "{2619482C6C4202E0}Prefabs/Characters/Campaign/Final/Campaign_US_AI.et" {
  {
   coords 4113.8 34.506 7812.118
@@ -137,17 +145,57 @@ $grp SCR_ChimeraCharacter : "{7A40B2D323AC5AC5}Prefabs/Characters/Campaign/Final
   angleY 143.093
  }
 }
+Vehicle CampaignSupplyTruckEast1 : "{BB00538859C87DAC}Prefabs/MP/Campaign/Assets/CampaignSupplyTruckEast.et" {
+ components {
+  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 21809.699
+  }
+ }
+ coords 4120.841 35.34 7795.438
+}
 $grp DecalEntity : "{DFB8563B533EBC88}prefabs/BloodSplatter.et" {
  {
-  coords 4114.913 34.823 7813.109
+  coords 4114.912 34.823 7813.101
   angleX -90
   angleY 180
   angleZ -148.18
  }
  {
-  coords 4115.154 35.105 7813.463
+  coords 4115.324 34.537 7812.807
   angleX -90
-  angleY -180
-  angleZ -180
+  angleY 180
+  angleZ -148.18
+  Mat "{8E3E81D1390C727B}materials/splatters/2.emat"
+ }
+ {
+  coords 4115.391 34.898 7813.682
+  angleX -90
+  angleZ 37.179
+  Mat "{C7505DF437AA8B21}materials/splatters/3.emat"
+ }
+ {
+  coords 4117.087 34.984 7811.792
+  angleX -90
+  angleY 180
+  angleZ -148.18
+  Mat "{8E8848EB456CFF4B}materials/splatters/4.emat"
+ }
+ {
+  coords 4114.102 35.35 7814.548
+  angleY 31.82
+  Mat "{7A800F7348B1973F}materials/splatters/5.emat"
+ }
+ {
+  coords 4114.892 34.602 7812.763
+  angleX -90
+  angleY 180
+  angleZ -148.18
+  Mat "{24682630F73C1930}materials/splatters/6.emat"
+ }
+ {
+  coords 4114.346 34.527 7812.537
+  angleX -90
+  angleZ 61.628
+  Mat "{D06061A8FAE17144}materials/splatters/7.emat"
  }
 }
