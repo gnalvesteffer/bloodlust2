@@ -1,7 +1,10 @@
 modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 {
-	private const float SPLATTER_INTERSECTION_DISTANCE = 1.5;
+	private const float GROUND_SPLATTER_INTERSECTION_DISTANCE = 3;
+	private const float SURFACE_SPLATTER_INTERSECTION_DISTANCE = 2;
 	private const float FAR_PLANE = 3.0;
+	private const float DAMAGE_THRESHOLD = 20.0;
+	private const float DAMAGE_OPACITY_SCALAR = 3.0;
 	
 	private ResourceName m_decalResourceName = "{E1866216CEB08179}materials/BloodSplatter.emat";
 	private IEntity m_owner = GetOwner();
@@ -20,27 +23,31 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 	{
 		super.OnDamage(type, damage, pHitZone, instigator, hitTransform, speed, colliderID, nodeID);
 
-		vector hitPosition = hitTransform[0];
-		vector hitDirection = hitTransform[1];
-		//vector hitNormal = hitTransform[2];
-		auto character = ChimeraCharacter.Cast(m_owner);
-		if (character)
+		if (damage >= DAMAGE_THRESHOLD)
 		{
-			SpawnBloodSplatterFromHit(hitPosition, hitDirection);
+			vector hitPosition = hitTransform[0];
+			vector hitDirection = hitTransform[1];
+			//vector hitNormal = hitTransform[2];
+			auto character = ChimeraCharacter.Cast(m_owner);
+			if (character)
+			{
+				SpawnBloodSplatterFromHit(hitPosition, hitDirection, damage);
+			}
 		}
 	}
 	
-	private void SpawnBloodSplatterFromHit(vector hitPosition, vector hitDirection)
+	private void SpawnBloodSplatterFromHit(vector hitPosition, vector hitDirection, float damage)
 	{
 		vector intersectionPosition;
+		int materialColor = Color.FromRGBA(255, 255, 255, Math.ClampInt(damage * DAMAGE_OPACITY_SCALAR, 0, 255)).PackToInt();
 				
-		auto groundTraceParam = GetSurfaceIntersection(hitPosition, Vector(0, -1, 0), SPLATTER_INTERSECTION_DISTANCE, intersectionPosition);
+		auto groundTraceParam = GetSurfaceIntersection(hitPosition, Vector(0, -1, 0), GROUND_SPLATTER_INTERSECTION_DISTANCE, intersectionPosition);
 		if (groundTraceParam.TraceEnt) // spawn splatter below character
 		{
 			m_world.CreateDecal(
 				groundTraceParam.TraceEnt,
 				m_owner.GetOrigin() + Vector(0, 1, 0),
-				-groundTraceParam.TraceNorm,
+				vector.Lerp(-groundTraceParam.TraceNorm, hitDirection, 0.5),
 				0,
 				FAR_PLANE,
 				Math.RandomFloat(0, 360) * Math.DEG2RAD,
@@ -48,11 +55,11 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 				1,
 				m_decalResourceName,
 				-1,
-				0xFFFFFFFF
+				materialColor
 			);
 		}
 		
-		auto surfaceTraceParam = GetSurfaceIntersection(hitPosition, hitDirection, SPLATTER_INTERSECTION_DISTANCE, intersectionPosition);
+		auto surfaceTraceParam = GetSurfaceIntersection(hitPosition, hitDirection, SURFACE_SPLATTER_INTERSECTION_DISTANCE, intersectionPosition);
 		if (surfaceTraceParam.TraceEnt) // spawn splatter on surface
 		{
 			m_world.CreateDecal(
@@ -66,7 +73,7 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 				1,
 				m_decalResourceName,
 				-1,
-				0xFFFFFFFF
+				materialColor
 			);
 		}
 	}
