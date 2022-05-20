@@ -84,6 +84,15 @@ LightEntity {
  Visualization Disabled
  LensFlareScale 0.247
 }
+Vehicle UAZ1 : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ components {
+  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 11880.1
+  }
+ }
+ coords 4117.769 35.235 7797.937
+ angleZ -11.71
+}
 $grp SCR_ChimeraCharacter : "{2619482C6C4202E0}Prefabs/Characters/Campaign/Final/Campaign_US_AI.et" {
  {
   coords 4113.8 34.506 7812.118
@@ -115,10 +124,6 @@ $grp SCR_ChimeraCharacter : "{2619482C6C4202E0}Prefabs/Characters/Campaign/Final
  {
   coords 4110.532 34.125 7810.33
   angleY -100.932
- }
- {
-  coords 4108.807 34.201 7803.698
-  angleY -100.07
  }
  {
   coords 4110.024 34.222 7805.322
@@ -208,6 +213,53 @@ $grp SCR_ChimeraCharacter : "{2619482C6C4202E0}Prefabs/Characters/Campaign/Final
   coords 4114.981 34.878 7813.686
   angleY 178.105
  }
+ {
+  coords 4103.069 33.736 7806.951
+ }
+ {
+  coords 4102.698 33.739 7806.106
+ }
+ {
+  coords 4102.248 33.726 7805.202
+ }
+ {
+  coords 4103.321 33.797 7804.956
+ }
+ {
+  coords 4103.67 33.804 7805.942
+ }
+ {
+  coords 4104.015 33.801 7806.754
+ }
+ {
+  coords 4104.984 33.872 7806.427
+ }
+ {
+  coords 4104.792 33.885 7805.613
+ }
+ {
+  coords 4104.037 33.852 7804.383
+ }
+ {
+  coords 4108.611 34.209 7803.184
+  angleY -80.87
+ }
+ {
+  coords 4112.232 34.382 7805.461
+  angleY 141.854
+ }
+ {
+  coords 4111.89 34.44 7803.005
+  angleY -39.804
+ }
+ {
+  coords 4116.466 34.951 7797.895
+  angleY -91.459
+ }
+ {
+  coords 4117.527 34.875 7800.725
+  angleY -23.942
+ }
 }
 $grp SCR_ChimeraCharacter : "{7A40B2D323AC5AC5}Prefabs/Characters/Campaign/Final/Campaign_USSR_AI.et" {
  {
@@ -231,11 +283,6 @@ $grp SCR_ChimeraCharacter : "{7A40B2D323AC5AC5}Prefabs/Characters/Campaign/Final
   angleY 143.093
  }
 }
-Vehicle CampaignSupplyTruckEast1 : "{BB00538859C87DAC}Prefabs/MP/Campaign/Assets/CampaignSupplyTruckEast.et" {
- components {
-  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
-   m_fVehicleDestroyDamage 21809.699
-  }
- }
- coords 4116.394 34.821 7800.615
+SCR_ChimeraAIAgent : "{B4C861A6DA2F5E05}AI/AIAgents/SCR_ChimeraAIAgentFull.et" {
+ coords 4106.835 34.071 7803.736
 }

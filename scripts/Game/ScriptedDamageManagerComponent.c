@@ -48,7 +48,7 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 		{
 			m_world.CreateDecal(
 				groundTraceParam.TraceEnt,
-				m_owner.GetOrigin() + Vector(0, FAR_PLANE / 2, 0),
+				m_owner.GetOrigin() + Vector(0, FAR_PLANE / 4, 0),
 				vector.Lerp(-groundTraceParam.TraceNorm, hitDirection, 0.5),
 				0,
 				FAR_PLANE,
@@ -66,7 +66,7 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 		{
 			m_world.CreateDecal(
 				surfaceTraceParam.TraceEnt,
-				intersectionPosition - hitDirection * (FAR_PLANE / 2),
+				intersectionPosition - hitDirection * (FAR_PLANE / 4),
 				hitDirection,
 				0,
 				FAR_PLANE,
