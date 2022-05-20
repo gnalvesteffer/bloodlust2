@@ -91,8 +91,8 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 		return param;
 	}
 	
-	private ResourceName GetRandomSplatterResourceName()
+	private string GetRandomSplatterResourceName()
 	{
-		return new ResourceName(string.Format("%1/%2.emat", SPLATTER_MATERIAL_DIRECTORY, Math.RandomInt(1, TOTAL_SPLATTER_MATERIALS)));
+		return string.Format("%1/%2.emat", SPLATTER_MATERIAL_DIRECTORY, Math.RandomInt(1, TOTAL_SPLATTER_MATERIALS)));
 	}
 }
