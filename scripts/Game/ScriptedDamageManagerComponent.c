@@ -5,6 +5,7 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 	private const float FAR_PLANE = 3.0;
 	private const float DAMAGE_THRESHOLD = 20.0;
 	private const float DAMAGE_OPACITY_SCALAR = 3.0;
+	private const int MINIMUM_SPLATTER_OPACITY = 255 / 3;
 	private const string SPLATTER_MATERIAL_DIRECTORY = "{E1866216CEB08179}materials/splatters";
 	private const int TOTAL_SPLATTER_MATERIALS = 7;
 	
@@ -40,7 +41,7 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 	private void SpawnBloodSplatterFromHit(vector hitPosition, vector hitDirection, float damage)
 	{
 		vector intersectionPosition;
-		int materialColor = Color.FromRGBA(255, 255, 255, Math.ClampInt(damage * DAMAGE_OPACITY_SCALAR, 0, 255)).PackToInt();
+		int materialColor = Color.FromRGBA(255, 255, 255, Math.ClampInt(damage * DAMAGE_OPACITY_SCALAR, MINIMUM_SPLATTER_OPACITY, 255)).PackToInt();
 				
 		auto groundTraceParam = GetSurfaceIntersection(hitPosition, Vector(0, -1, 0), GROUND_SPLATTER_INTERSECTION_DISTANCE, intersectionPosition);
 		if (groundTraceParam.TraceEnt) // spawn splatter below character
@@ -52,9 +53,9 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 				0,
 				FAR_PLANE,
 				Math.RandomFloat(0, 360) * Math.DEG2RAD,
-				Math.RandomFloat(1, 2),
+				Math.RandomFloat(0.75, 1.5),
 				1,
-				GetRandomSplatterResourceName(),
+				GetRandomSplatterMaterialPath(),
 				-1,
 				materialColor
 			);
@@ -70,9 +71,9 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 				0,
 				FAR_PLANE,
 				Math.RandomFloat(0, 360) * Math.DEG2RAD,
-				Math.RandomFloat(0.75, 1.0),
+				Math.RandomFloat(0.5, 1.0),
 				1,
-				GetRandomSplatterResourceName(),
+				GetRandomSplatterMaterialPath(),
 				-1,
 				materialColor
 			);
@@ -91,7 +92,7 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 		return param;
 	}
 	
-	private string GetRandomSplatterResourceName()
+	private string GetRandomSplatterMaterialPath()
 	{
 		return string.Format("%1/%2.emat", SPLATTER_MATERIAL_DIRECTORY, Math.RandomInt(1, TOTAL_SPLATTER_MATERIALS)));
 	}
