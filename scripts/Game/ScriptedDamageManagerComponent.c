@@ -5,8 +5,9 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 	private const float FAR_PLANE = 3.0;
 	private const float DAMAGE_THRESHOLD = 20.0;
 	private const float DAMAGE_OPACITY_SCALAR = 3.0;
+	private const string SPLATTER_MATERIAL_DIRECTORY = "{E1866216CEB08179}materials/splatters";
+	private const int TOTAL_SPLATTER_MATERIALS = 7;
 	
-	private ResourceName m_decalResourceName = "{E1866216CEB08179}materials/BloodSplatter.emat";
 	private IEntity m_owner = GetOwner();
 	private World m_world = GetOwner().GetWorld();
 
@@ -53,7 +54,7 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 				Math.RandomFloat(0, 360) * Math.DEG2RAD,
 				Math.RandomFloat(1, 2),
 				1,
-				m_decalResourceName,
+				GetRandomSplatterResourceName(),
 				-1,
 				materialColor
 			);
@@ -71,7 +72,7 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 				Math.RandomFloat(0, 360) * Math.DEG2RAD,
 				Math.RandomFloat(0.75, 1.0),
 				1,
-				m_decalResourceName,
+				GetRandomSplatterResourceName(),
 				-1,
 				materialColor
 			);
@@ -88,5 +89,10 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 		float intersectionDistance = m_world.TraceMove(param, NULL) * distance;
 		intersectionPosition = origin + (direction * intersectionDistance);
 		return param;
+	}
+	
+	private ResourceName GetRandomSplatterResourceName()
+	{
+		return new ResourceName(string.Format("%1/%2.emat", SPLATTER_MATERIAL_DIRECTORY, Math.RandomInt(1, TOTAL_SPLATTER_MATERIALS)));
 	}
 }
