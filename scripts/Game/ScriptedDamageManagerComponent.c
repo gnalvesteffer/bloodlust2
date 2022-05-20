@@ -2,7 +2,7 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 {
 	private const float GROUND_SPLATTER_INTERSECTION_DISTANCE = 3;
 	private const float SURFACE_SPLATTER_INTERSECTION_DISTANCE = 2;
-	private const float FAR_PLANE = 1.0;
+	private const float FAR_PLANE = 2.0;
 	private const float DAMAGE_THRESHOLD = 20.0;
 	private const float DAMAGE_OPACITY_SCALAR = 4.0;
 	private const int MINIMUM_SPLATTER_OPACITY = 255 / 3;

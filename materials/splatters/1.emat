@@ -4,14 +4,14 @@ MatPBRDecal {
  SpecularIBL 0.377 0.377 0.377 1
  Diffuse 0.767 0.767 0.767 1
  Sort decal
- Specular 0.186 0.105 0.101 1
+ Specular 0.282 0.282 0.282 1
  SpecularMul 0.028
  BlendMode AlphaBlend
- RoughnessScale 0.199
+ RoughnessScale 0.028
  MetalnessScale 0.284
  DielectricReflectance 0.043
  BCRMap "{667256A3F68DDC88}textures/blood_bcr.edds"
  OpacityMap "{D6873D6728DE4A2F}textures/masks/1.edds"
- NormalPower 0.5
+ NormalPower -0.5
  NMOMap "{67191F5AA0BF8174}textures/blood_normal.edds"
 }
