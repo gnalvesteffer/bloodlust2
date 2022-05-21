@@ -1,10 +1,10 @@
 class BL_CharacterBleedBehavior
 {
-	private static const float BLEEDS_PER_DAMAGE_SCALAR = 0.1;
-	private static const float MIN_BLEED_INTERVAL_MS = 2 * 1000;
+	private static const float BLEEDS_PER_DAMAGE_SCALAR = 0.5;
+	private static const float MIN_BLEED_INTERVAL_MS = 0.1 * 1000;
 	private static const float MAX_BLEED_INTERVAL_MS = 7 * 1000;
-	private static const float MIN_DECAL_SIZE = 0.125;
-	private static const float MAX_DECAL_SIZE = 0.375;
+	private static const float MIN_DECAL_SIZE = 0.25;
+	private static const float MAX_DECAL_SIZE = 0.5;
 	private static const ref array<string> DROPLET_MATERIAL_PATHS =
 	{
 		"{39924245A51C37C7}materials/droplets/1.emat",
@@ -74,7 +74,7 @@ class BL_CharacterBleedBehavior
 			m_owner,
 			m_world,
 			m_owner.GetOrigin() + Vector(0, 1, 0),
-			Vector(Math.RandomFloat(-0.25, 0.25), -1, Math.RandomFloat(-0.25, 0.25)),
+			Vector(Math.RandomFloat(-1, 1), -1, Math.RandomFloat(-1, 1)),
 			BL_Constants.GROUND_SPLATTER_INTERSECTION_DISTANCE,
 			intersectionPosition
 		);
