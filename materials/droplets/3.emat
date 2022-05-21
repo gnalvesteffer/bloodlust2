@@ -11,7 +11,7 @@ MatPBRDecal {
  MetalnessScale 0.284
  DielectricReflectance 0.043
  BCRMap "{667256A3F68DDC88}textures/blood_bcr.edds"
- OpacityMap "{D6873D6728DE4A2F}textures/masks/splatters/1.edds"
+ OpacityMap "{18BD2A454C56EF6B}textures/masks/droplets/3.edds"
  NormalPower -0.5
  NMOMap "{67191F5AA0BF8174}textures/blood_normal.edds"
 }

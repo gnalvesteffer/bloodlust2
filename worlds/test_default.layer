@@ -37,7 +37,7 @@ $grp DecalEntity {
   Mat "{7A800F7348B1973F}materials/splatters/5.emat"
  }
  {
-  coords 4114.886 34.727 7812.748
+  coords 4114.886 34.646 7812.748
   angleX -90
   angleY 180
   angleZ -148.18
@@ -74,6 +74,33 @@ $grp DecalEntity {
   angleZ -34.263
   TerrainOnly 0
   Mat "{E1866216CEB08179}materials/splatters/1.emat"
+ }
+ {
+  coords 4113.829 34.474 7813.1
+  angleX -90
+  angleY 180
+  angleZ -148.18
+  scale 0.39
+  TerrainOnly 0
+  Mat "{39924245A51C37C7}materials/droplets/1.emat"
+ }
+ {
+  coords 4113.203 34.535 7813.747
+  angleX -90
+  angleY 180
+  angleZ -148.18
+  scale 0.39
+  TerrainOnly 0
+  Mat "{F39040D0F13312C3}materials/droplets/2.emat"
+ }
+ {
+  coords 4112.923 34.511 7813.095
+  angleX -90
+  angleY 180
+  angleZ -148.18
+  scale 0.39
+  TerrainOnly 0
+  Mat "{07980748FCEE7AB7}materials/droplets/3.emat"
  }
 }
 LightEntity {
@@ -260,6 +287,10 @@ $grp SCR_ChimeraCharacter : "{2619482C6C4202E0}Prefabs/Characters/Campaign/Final
   coords 4117.527 34.875 7800.725
   angleY -23.942
  }
+ {
+  coords 4112.49 34.483 7812.453
+  angleY -23.942
+ }
 }
 $grp SCR_ChimeraCharacter : "{7A40B2D323AC5AC5}Prefabs/Characters/Campaign/Final/Campaign_USSR_AI.et" {
  {
@@ -282,7 +313,4 @@ $grp SCR_ChimeraCharacter : "{7A40B2D323AC5AC5}Prefabs/Characters/Campaign/Final
   coords 4109.231 34.564 7817
   angleY 143.093
  }
-}
-SCR_ChimeraAIAgent : "{B4C861A6DA2F5E05}AI/AIAgents/SCR_ChimeraAIAgentFull.et" {
- coords 4106.835 34.071 7803.736
 }
