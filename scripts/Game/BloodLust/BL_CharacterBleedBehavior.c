@@ -1,10 +1,17 @@
 class BL_CharacterBleedBehavior
 {
-	private const float BLEEDS_PER_DAMAGE_SCALAR = 0.1;
-	private const float MIN_BLEED_INTERVAL_MS = 2 * 1000;
-	private const float MAX_BLEED_INTERVAL_MS = 7 * 1000;
-	private const float MIN_SPLATTER_SIZE = 0.5;
-	private const float MAX_SPLATTER_SIZE = 0.75;
+	private static const float BLEEDS_PER_DAMAGE_SCALAR = 0.1;
+	private static const float MIN_BLEED_INTERVAL_MS = 2 * 1000;
+	private static const float MAX_BLEED_INTERVAL_MS = 7 * 1000;
+	private static const float MIN_DECAL_SIZE = 0.125;
+	private static const float MAX_DECAL_SIZE = 0.375;
+	private static const ref array<string> DROPLET_MATERIAL_PATHS =
+	{
+		"{39924245A51C37C7}materials/droplets/1.emat",
+		"{F39040D0F13312C3}materials/droplets/2.emat",
+		"{07980748FCEE7AB7}materials/droplets/3.emat",
+		"{4E4012578E280EDD}materials/droplets/4.emat",
+	};
 
 	private IEntity m_owner;
 	private World m_world;
@@ -80,7 +87,7 @@ class BL_CharacterBleedBehavior
 				0,
 				BL_Constants.DECAL_FAR_PLANE,
 				Math.RandomFloat(0, 360) * Math.DEG2RAD,
-				Math.RandomFloat(MIN_SPLATTER_SIZE, MAX_SPLATTER_SIZE),
+				Math.RandomFloat(MIN_DECAL_SIZE, MAX_DECAL_SIZE),
 				1,
 				GetRandomDropletMaterialPath(),
 				BL_Constants.DECAL_LIFETIME_SECS,
@@ -96,14 +103,6 @@ class BL_CharacterBleedBehavior
 
 	string GetRandomDropletMaterialPath()
 	{
-		const array<string> DROPLET_MATERIAL_PATHS = 
-		{
-			"{39924245A51C37C7}materials/droplets/1.emat",
-			"{F39040D0F13312C3}materials/droplets/2.emat",
-			"{07980748FCEE7AB7}materials/droplets/3.emat",
-			"{4E4012578E280EDD}materials/droplets/4.emat",
-		};
-
 		return DROPLET_MATERIAL_PATHS.GetRandomElement();
 	}
 }
