@@ -96,8 +96,8 @@ class BL_BleedingBehavior
 
 	string GetRandomDropletMaterialPath()
 	{
-		const string DROPLET_MATERIAL_DIRECTORY = "{E1866216CEB08179}materials/droplets";
-		const int TOTAL_DROPLET_MATERIALS = 3;
+		const string DROPLET_MATERIAL_DIRECTORY = "{39924245A51C37C7}materials/droplets";
+		const int TOTAL_DROPLET_MATERIALS = 4;
 
 		return string.Format("%1/%2.emat", DROPLET_MATERIAL_DIRECTORY, Math.RandomInt(1, TOTAL_DROPLET_MATERIALS)));
 	}
