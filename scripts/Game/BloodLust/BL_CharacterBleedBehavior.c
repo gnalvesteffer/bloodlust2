@@ -1,6 +1,6 @@
-class BL_BleedingBehavior
+class BL_CharacterBleedBehavior
 {
-	private const float BLEEDS_PER_DAMAGE_SCALAR = 0.05;
+	private const float BLEEDS_PER_DAMAGE_SCALAR = 0.1;
 	private const float MIN_BLEED_INTERVAL_MS = 2 * 1000;
 	private const float MAX_BLEED_INTERVAL_MS = 7 * 1000;
 	private const float MIN_SPLATTER_SIZE = 0.5;
@@ -96,9 +96,14 @@ class BL_BleedingBehavior
 
 	string GetRandomDropletMaterialPath()
 	{
-		const string DROPLET_MATERIAL_DIRECTORY = "{39924245A51C37C7}materials/droplets";
-		const int TOTAL_DROPLET_MATERIALS = 4;
+		const array<string> DROPLET_MATERIAL_PATHS = 
+		{
+			"{39924245A51C37C7}materials/droplets/1.emat",
+			"{F39040D0F13312C3}materials/droplets/2.emat",
+			"{07980748FCEE7AB7}materials/droplets/3.emat",
+			"{4E4012578E280EDD}materials/droplets/4.emat",
+		};
 
-		return string.Format("%1/%2.emat", DROPLET_MATERIAL_DIRECTORY, Math.RandomInt(1, TOTAL_DROPLET_MATERIALS)));
+		return DROPLET_MATERIAL_PATHS.GetRandomElement();
 	}
 }

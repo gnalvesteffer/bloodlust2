@@ -1,22 +1,21 @@
-modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponent
+class BL_CharacterSplatterBehavior
 {
-	private const float DAMAGE_THRESHOLD = 20.0;
-
 	private IEntity m_owner;
 	private World m_world;
-	private ref BL_BleedingBehavior m_bleedingBehavior;
-
-	override void OnInit(IEntity owner)
+	private SCR_CharacterDamageManagerComponent m_damageManagerComponent;
+	
+	void OnInit(
+		IEntity owner,
+		World world,
+		SCR_CharacterDamageManagerComponent damageManagerComponent
+	)
 	{
-		super.OnInit(owner);
-
-		m_owner = GetOwner();
-		m_world = m_owner.GetWorld();
-		m_bleedingBehavior = new BL_BleedingBehavior;
-		m_bleedingBehavior.OnInit(m_owner, m_world, this);
+		m_owner = owner;
+		m_world = world;
+		m_damageManagerComponent = damageManagerComponent;
 	}
-
-	override void OnDamage(
+	
+	void OnDamage(
 			EDamageType type,
 			float damage,
 			HitZone pHitZone,
@@ -27,24 +26,16 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 			int nodeID
 	)
 	{
-		super.OnDamage(type, damage, pHitZone, instigator, hitTransform, speed, colliderID, nodeID);
-
-		if (damage >= DAMAGE_THRESHOLD)
-		{
-			vector hitPosition = hitTransform[0];
-			vector hitDirection = hitTransform[1];
-			//vector hitNormal = hitTransform[2];
-			SpawnBloodSplatterFromHit(hitPosition, hitDirection, damage);
-			m_bleedingBehavior.OnDamage(type, damage, pHitZone, instigator, hitTransform, speed, colliderID, nodeID);
-		}
+		vector hitPosition = hitTransform[0];
+		vector hitDirection = hitTransform[1];
+		//vector hitNormal = hitTransform[2];
+		SpawnBloodSplatterFromHit(hitPosition, hitDirection, damage);
 	}
-
-	override void OnFrame(IEntity owner, float timeSlice)
+	
+	void OnFrame(IEntity owner, float timeSlice)
 	{
-		super.OnFrame(owner, timeSlice);
-		m_bleedingBehavior.OnFrame();
 	}
-
+	
 	private void SpawnBloodSplatterFromHit(vector hitPosition, vector hitDirection, float damage)
 	{
 		vector intersectionPosition;
@@ -102,12 +93,20 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 			);
 		}
 	}
-
+	
 	string GetRandomSplatterMaterialPath()
 	{
-		const string SPLATTER_MATERIAL_DIRECTORY = "{E1866216CEB08179}materials/splatters";
-		const int TOTAL_SPLATTER_MATERIALS = 7;
+		const array<string> SPLATTER_MATERIAL_PATHS =
+		{
+			"{E1866216CEB08179}materials/splatters/1.emat",
+			"{8E3E81D1390C727B}materials/splatters/2.emat",
+			"{C7505DF437AA8B21}materials/splatters/3.emat",
+			"{8E8848EB456CFF4B}materials/splatters/4.emat",
+			"{7A800F7348B1973F}materials/splatters/5.emat",
+			"{24682630F73C1930}materials/splatters/6.emat",
+			"{D06061A8FAE17144}materials/splatters/7.emat",
+		};
 
-		return string.Format("%1/%2.emat", SPLATTER_MATERIAL_DIRECTORY, Math.RandomInt(1, TOTAL_SPLATTER_MATERIALS)));
+		return SPLATTER_MATERIAL_PATHS.GetRandomElement();
 	}
 }
