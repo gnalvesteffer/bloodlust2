@@ -71,7 +71,7 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 				Math.RandomFloat(0.75, 1.5),
 				1,
 				GetRandomSplatterMaterialPath(),
-				-1,
+				BL_Constants.DECAL_LIFETIME_SECS,
 				materialColor
 			);
 		}
@@ -97,7 +97,7 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 				Math.RandomFloat(0.5, 1.0),
 				1,
 				GetRandomSplatterMaterialPath(),
-				-1,
+				BL_Constants.DECAL_LIFETIME_SECS,
 				materialColor
 			);
 		}

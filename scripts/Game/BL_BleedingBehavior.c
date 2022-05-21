@@ -83,7 +83,7 @@ class BL_BleedingBehavior
 				Math.RandomFloat(MIN_SPLATTER_SIZE, MAX_SPLATTER_SIZE),
 				1,
 				GetRandomDropletMaterialPath(),
-				-1,
+				BL_Constants.DECAL_LIFETIME_SECS,
 				BL_Utilities.CalculateBloodColorFromDamage(m_bloodHitZone.GetHealthScaled() * 100)
 			);
 		}
