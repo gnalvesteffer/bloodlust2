@@ -13,13 +13,13 @@ class BL_CharacterBleedBehavior
 		"{4E4012578E280EDD}materials/droplets/4.emat",
 	};
 
-	private IEntity m_owner;
-	private World m_world;
-	private SCR_CharacterDamageManagerComponent m_damageManagerComponent;
-	private HitZone m_bloodHitZone;
-	private int m_bleedsRemaining = 0;
-	private float m_nextBleedTime = 0;
-	private float m_lastHealth = 0;
+	private IEntity _owner;
+	private World _world;
+	private SCR_CharacterDamageManagerComponent _damageManagerComponent;
+	private HitZone _bloodHitZone;
+	private int _bleedsRemaining = 0;
+	private float _nextBleedTime = 0;
+	private float _lastHealth = 0;
 
 	void OnInit(
 		IEntity owner,
@@ -27,11 +27,11 @@ class BL_CharacterBleedBehavior
 		SCR_CharacterDamageManagerComponent damageManagerComponent
 	)
 	{
-		m_owner = owner;
-		m_world = world;
-		m_damageManagerComponent = damageManagerComponent;
-		m_bloodHitZone = m_damageManagerComponent.GetBloodHitZone();
-		m_lastHealth = m_bloodHitZone.GetHealth();
+		_owner = owner;
+		_world = world;
+		_damageManagerComponent = damageManagerComponent;
+		_bloodHitZone = _damageManagerComponent.GetBloodHitZone();
+		_lastHealth = _bloodHitZone.GetHealth();
 	}
 
 	void OnDamage(
@@ -45,25 +45,25 @@ class BL_CharacterBleedBehavior
 		int nodeID
 	)
 	{
-		m_bleedsRemaining += damage * BLEEDS_PER_DAMAGE_SCALAR;
-		m_nextBleedTime = CalculateNextBleedTime();
+		_bleedsRemaining += damage * BLEEDS_PER_DAMAGE_SCALAR;
+		_nextBleedTime = CalculateNextBleedTime();
 	}
 
 	void OnFrame()
 	{
-		float time = m_world.GetWorldTime();
-		float health = m_bloodHitZone.GetHealth();
-		if (health > m_lastHealth) // unit must've been healed
+		float time = _world.GetWorldTime();
+		float health = _bloodHitZone.GetHealth();
+		if (health > _lastHealth) // unit must've been healed
 		{
-			m_bleedsRemaining = 0;
+			_bleedsRemaining = 0;
 		}
-		if (m_bleedsRemaining > 0 && time >= m_nextBleedTime)
+		if (_bleedsRemaining > 0 && time >= _nextBleedTime)
 		{
 			TryCreateBleedSplatter();
-			m_nextBleedTime = CalculateNextBleedTime();
-			--m_bleedsRemaining;
+			_nextBleedTime = CalculateNextBleedTime();
+			--_bleedsRemaining;
 		}
-		m_lastHealth = health;
+		_lastHealth = health;
 	}
 
 	private void TryCreateBleedSplatter()
@@ -71,18 +71,18 @@ class BL_CharacterBleedBehavior
 		// TODO: make bleed originate from hit positions, and not the character origin.
 		vector intersectionPosition;
 		auto groundTraceParam = BL_Utilities.GetSurfaceIntersection(
-			m_owner,
-			m_world,
-			m_owner.GetOrigin() + Vector(0, 1, 0),
+			_owner,
+			_world,
+			_owner.GetOrigin() + Vector(0, 1, 0),
 			Vector(Math.RandomFloat(-1, 1), -1, Math.RandomFloat(-1, 1)),
 			BL_Constants.GROUND_SPLATTER_INTERSECTION_DISTANCE,
 			intersectionPosition
 		);
 		if (groundTraceParam.TraceEnt)
 		{
-			m_world.CreateDecal(
+			_world.CreateDecal(
 				groundTraceParam.TraceEnt,
-				m_owner.GetOrigin() + Vector(0, BL_Constants.DECAL_FAR_PLANE / 4, 0),
+				_owner.GetOrigin() + Vector(0, BL_Constants.DECAL_FAR_PLANE / 4, 0),
 				-groundTraceParam.TraceNorm,
 				0,
 				BL_Constants.DECAL_FAR_PLANE,
@@ -91,14 +91,14 @@ class BL_CharacterBleedBehavior
 				1,
 				GetRandomDropletMaterialPath(),
 				BL_Constants.DECAL_LIFETIME_SECS,
-				BL_Utilities.CalculateBloodColorFromDamage(m_bloodHitZone.GetHealthScaled() * 100)
+				BL_Utilities.CalculateBloodColorFromDamage(_bloodHitZone.GetHealthScaled() * 100)
 			);
 		}
 	}
 
 	private float CalculateNextBleedTime()
 	{
-		return m_world.GetWorldTime() + Math.RandomFloat(MIN_BLEED_INTERVAL_MS, MAX_BLEED_INTERVAL_MS);
+		return _world.GetWorldTime() + Math.RandomFloat(MIN_BLEED_INTERVAL_MS, MAX_BLEED_INTERVAL_MS);
 	}
 
 	string GetRandomDropletMaterialPath()

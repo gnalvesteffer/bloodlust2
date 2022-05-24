@@ -13,9 +13,9 @@ class BL_CharacterSplatterBehavior
 		"{D06061A8FAE17144}materials/splatters/7.emat",
 	};
 
-	private IEntity m_owner;
-	private World m_world;
-	private SCR_CharacterDamageManagerComponent m_damageManagerComponent;
+	private IEntity _owner;
+	private World _world;
+	private SCR_CharacterDamageManagerComponent _damageManagerComponent;
 
 	void OnInit(
 		IEntity owner,
@@ -23,9 +23,9 @@ class BL_CharacterSplatterBehavior
 		SCR_CharacterDamageManagerComponent damageManagerComponent
 	)
 	{
-		m_owner = owner;
-		m_world = world;
-		m_damageManagerComponent = damageManagerComponent;
+		_owner = owner;
+		_world = world;
+		_damageManagerComponent = damageManagerComponent;
 	}
 
 	void OnDamage(
@@ -56,8 +56,8 @@ class BL_CharacterSplatterBehavior
 
 		// attempt ground splatter
 		auto groundTraceParam = BL_Utilities.GetSurfaceIntersection(
-			m_owner,
-			m_world,
+			_owner,
+			_world,
 			hitPosition,
 			Vector(0, -1, 0),
 			BL_Constants.GROUND_SPLATTER_INTERSECTION_DISTANCE,
@@ -65,9 +65,9 @@ class BL_CharacterSplatterBehavior
 		);
 		if (groundTraceParam.TraceEnt) // spawn splatter below character
 		{
-			m_world.CreateDecal(
+			_world.CreateDecal(
 				groundTraceParam.TraceEnt,
-				m_owner.GetOrigin() + Vector(0, BL_Constants.DECAL_FAR_PLANE / 4, 0),
+				_owner.GetOrigin() + Vector(0, BL_Constants.DECAL_FAR_PLANE / 4, 0),
 				vector.Lerp(-groundTraceParam.TraceNorm, hitDirection, 0.5),
 				0,
 				BL_Constants.DECAL_FAR_PLANE,
@@ -82,8 +82,8 @@ class BL_CharacterSplatterBehavior
 
 		// attempt surface splatter
 		auto surfaceTraceParam = BL_Utilities.GetSurfaceIntersection(
-			m_owner,
-			m_world,
+			_owner,
+			_world,
 			hitPosition,
 			hitDirection,
 			BL_Constants.SURFACE_SPLATTER_INTERSECTION_DISTANCE,
@@ -91,7 +91,7 @@ class BL_CharacterSplatterBehavior
 		);
 		if (surfaceTraceParam.TraceEnt) // spawn splatter on surface
 		{
-			m_world.CreateDecal(
+			_world.CreateDecal(
 				surfaceTraceParam.TraceEnt,
 				intersectionPosition - hitDirection * (BL_Constants.DECAL_FAR_PLANE / 4),
 				hitDirection,

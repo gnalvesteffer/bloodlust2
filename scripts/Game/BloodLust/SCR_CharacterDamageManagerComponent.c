@@ -1,7 +1,7 @@
 modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponent
 {
-	private ref BL_CharacterSplatterBehavior m_splatterBehavior;
-	private ref BL_CharacterBleedBehavior m_bleedBehavior;
+	private ref BL_CharacterSplatterBehavior _splatterBehavior;
+	private ref BL_CharacterBleedBehavior _bleedBehavior;
 
 	override void OnInit(IEntity owner)
 	{
@@ -9,11 +9,11 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 
 		auto world = owner.GetWorld();
 
-		m_splatterBehavior = new BL_CharacterSplatterBehavior;
-		m_splatterBehavior.OnInit(owner, world, this);
+		_splatterBehavior = new BL_CharacterSplatterBehavior;
+		_splatterBehavior.OnInit(owner, world, this);
 
-		m_bleedBehavior = new BL_CharacterBleedBehavior;
-		m_bleedBehavior.OnInit(owner, world, this);
+		_bleedBehavior = new BL_CharacterBleedBehavior;
+		_bleedBehavior.OnInit(owner, world, this);
 	}
 
 	override void OnDamage(
@@ -31,14 +31,14 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 
 		if (damage >= BL_Constants.DAMAGE_THRESHOLD)
 		{
-			m_splatterBehavior.OnDamage(type, damage, pHitZone, instigator, hitTransform, speed, colliderID, nodeID);
-			m_bleedBehavior.OnDamage(type, damage, pHitZone, instigator, hitTransform, speed, colliderID, nodeID);
+			_splatterBehavior.OnDamage(type, damage, pHitZone, instigator, hitTransform, speed, colliderID, nodeID);
+			_bleedBehavior.OnDamage(type, damage, pHitZone, instigator, hitTransform, speed, colliderID, nodeID);
 		}
 	}
 
 	override void OnFrame(IEntity owner, float timeSlice)
 	{
 		super.OnFrame(owner, timeSlice);
-		m_bleedBehavior.OnFrame();
+		_bleedBehavior.OnFrame();
 	}
 }
